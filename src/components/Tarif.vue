@@ -63,6 +63,13 @@ const emit = defineEmits(["calculate", "setData"]);
   margin-right: 16px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 640px) {
+  .tarif {
+    margin-bottom: 16px;
+  }
+}
+
 .title {
   font-size: 32px;
   margin: 0;

@@ -78,9 +78,11 @@ onMounted(async () => {
   </div>
   <div v-show="isShow" class="price-info">
     <p class="price">
-      Сумма для оплаты: {{ priceCurrency }} {{ currencySymbol }}
+      Сумма для оплаты: <span>{{ discount }} {{ currencySymbol }}</span>
     </p>
-    <p class="price">Сумма скидки: {{ discount }} {{ currencySymbol }}</p>
+    <p class="price">
+      Сумма скидки: <span>{{ discount }} {{ currencySymbol }}</span>
+    </p>
   </div>
   <button class="btn" @click.prevent="tarifCalculate">Рассчитать</button>
 </template>
@@ -92,6 +94,26 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 640px) {
+  .tarif-container {
+    flex-direction: column;
+  }
+
+  .price-info {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .price {
+    font-size: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
 .tarif-title {
   font-size: 36px;
   margin-top: 8px;
@@ -99,7 +121,7 @@ onMounted(async () => {
 .price-info {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   justify-content: start;
   margin-top: 16px;
 }
