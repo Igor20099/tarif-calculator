@@ -38,8 +38,6 @@ const tarifCalculate = () => {
         tarifs[activeTarif.value].price.month * currencyCNY.value;
       discount.value = 0;
     }
-
-    console.log("Юань");
   } else if (currentCurrency.value === 1) {
     currencySymbol.value = "₸";
     if (currentPeriod.value === 1) {
@@ -53,7 +51,6 @@ const tarifCalculate = () => {
         tarifs[activeTarif.value].price.month * currencyKZT.value;
       discount.value = 0;
     }
-    console.log("Тенге");
   }
   isShow.value = true;
 };
@@ -67,7 +64,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h1>Тарифный калькулятор</h1>
+  <h1 class="title">Тарифный калькулятор</h1>
   <h2 class="tarif-title">Тарифы</h2>
   <div class="tarif-container">
     <Tarif
@@ -79,19 +76,44 @@ onMounted(async () => {
       @click="activeTarif = i"
     />
   </div>
-  <div v-show="isShow">
-    <p>Сумма: {{ priceCurrency }} {{ currencySymbol }}</p>
-    <p>Скидка: {{ discount }} {{ currencySymbol }}</p>
+  <div v-show="isShow" class="price-info">
+    <p class="price">
+      Сумма для оплаты: {{ priceCurrency }} {{ currencySymbol }}
+    </p>
+    <p class="price">Сумма скидки: {{ discount }} {{ currencySymbol }}</p>
   </div>
-  <button @click.prevent="tarifCalculate">Рассчитать</button>
+  <button class="btn" @click.prevent="tarifCalculate">Рассчитать</button>
 </template>
 
 <style scoped>
 .tarif-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .tarif-title {
   font-size: 36px;
+  margin-top: 8px;
+}
+.price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  margin-top: 16px;
+}
+.price {
+  margin: 0;
+  font-size: 24px;
+}
+
+.btn {
+  margin-top: 16px;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 </style>

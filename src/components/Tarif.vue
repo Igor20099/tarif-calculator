@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref } from "vue";
 
 const props = defineProps(["tarif", "isActive"]);
 const currencyList = ["Юань,¥", "Тенге, ₸"];
@@ -48,7 +48,7 @@ const activeCurrency = ref(0);
 const periodList = ["за месяц", "за год"];
 const activePeriod = ref(0);
 const pricePeriod = ref(0);
-const emit = defineEmits(["calculate"]);
+const emit = defineEmits(["calculate", "setData"]);
 </script>
 
 <style scoped>
@@ -59,7 +59,7 @@ const emit = defineEmits(["calculate"]);
   align-items: center;
   border: 1px solid #fff;
   border-radius: 10px;
-  padding: 24px;
+  padding: 16px;
   margin-right: 16px;
   cursor: pointer;
 }
@@ -69,13 +69,23 @@ const emit = defineEmits(["calculate"]);
 }
 
 .price {
+  margin-top: 8px;
   font-size: 24px;
+  margin-bottom: 8px;
 }
 .list-currency {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.title-currency {
+  margin-top: 4px;
+  margin-bottom: 8px;
 }
 
 .list-period {
@@ -83,13 +93,14 @@ const emit = defineEmits(["calculate"]);
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  margin-top: 0;
 }
 .currency {
-  border: 1px solid #fff;
   padding: 8px;
 }
 .period {
-  border: 1px solid #fff;
   padding: 8px;
 }
 .active {
