@@ -78,10 +78,11 @@ onMounted(async () => {
   </div>
   <div v-show="isShow" class="price-info">
     <p class="price">
-      Сумма для оплаты: <span>{{ priceCurrency }} {{ currencySymbol }}</span>
+      Сумма для оплаты:
+      <span>{{ Math.floor(priceCurrency) }} {{ currencySymbol }}</span>
     </p>
     <p class="price">
-      Сумма скидки: <span>{{ discount }} {{ currencySymbol }}</span>
+      Сумма скидки: <span>{{ Math.floor(discount) }} {{ currencySymbol }}</span>
     </p>
   </div>
   <button class="btn" @click.prevent="tarifCalculate">Рассчитать</button>
